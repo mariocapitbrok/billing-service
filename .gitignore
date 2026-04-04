@@ -8,5 +8,4 @@ bin/
 *.test
 *.out
 vendor/
-.gocache/
-server
+/server
