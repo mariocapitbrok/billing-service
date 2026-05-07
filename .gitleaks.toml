@@ -1,0 +1,46 @@
+title = "Gitleaks Configuration for CRM Project"
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "generic-api-key"
+description = "Generic API Key"
+regex = '''(?i)(api[_-]?key|apikey|api[_-]?secret)['"]?\s*[:=]\s*['"]?[a-zA-Z0-9]{20,}'''
+tags = ["key", "API"]
+
+[[rules]]
+id = "database-connection-string"
+description = "Database Connection String"
+regex = '''(?i)(postgres|mysql|mongodb)://[^\s]+'''
+tags = ["database", "connection"]
+
+[[rules]]
+id = "jwt-secret"
+description = "JWT Secret"
+regex = '''(?i)(jwt[_-]?secret|secret[_-]?key)['"]?\s*[:=]\s*['"]?[a-zA-Z0-9]{20,}'''
+tags = ["jwt", "secret"]
+
+[[rules]]
+id = "telnyx-api-key"
+description = "Telnyx API Key"
+regex = '''KEY[a-zA-Z0-9]{40,}'''
+tags = ["telnyx", "api"]
+
+[allowlist]
+description = "Allowlist for false positives"
+paths = [
+    '''\.env\.example$''',
+    '''\.env\.template$''',
+    '''^docs/''',
+    '''Makefile$''',
+    '''AGENTS\.md$''',
+]
+
+regexes = [
+    '''EXAMPLE''',
+    '''example\.com''',
+    '''localhost''',
+    '''127\.0\.0\.1''',
+    '''_test\.(go|ts|js)$''',
+]
