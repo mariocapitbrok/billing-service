@@ -1,5 +1,6 @@
 bin/
 .env
+.gocache/
 *.exe
 *.exe~
 *.dll
